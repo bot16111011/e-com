@@ -42,7 +42,7 @@ const Products = () => {
             dispatch(setProducts(response.data));
             setOriginalProducts(response.data);
           } catch (error) {
-            console.error("Error fetching products:", error);
+            console.error("Error fetching products from data.json:", error);
           }
         }
       }
@@ -72,8 +72,20 @@ const Products = () => {
       setIsEditing(null);
       toast.success("Product updated successfully!");
     } catch (error) {
-      console.error("Error updating product:", error);
-      toast.error("Failed to update product");
+      console.error("Error updating product on server:", error);
+      try {
+        const response = await axios.get('/data.json');
+        const updatedProducts = response.data.map(product => 
+          product.id === editForm.id ? editForm : product
+        );
+        dispatch(setProducts(updatedProducts));
+        setOriginalProducts(updatedProducts);
+        setIsEditing(null);
+        toast.success("Product updated locally!");
+      } catch (localError) {
+        console.error("Error updating product locally:", localError);
+        toast.error("Failed to update product");
+      }
     }
   };
 
@@ -86,8 +98,17 @@ const Products = () => {
       localStorage.setItem('products', JSON.stringify(updatedProducts));
       toast.error("Product removed successfully!");
     } catch (error) {
-      console.error("Error deleting product:", error);
-      toast.error("Failed to delete product");
+      console.error("Error deleting product on server:", error);
+      try {
+        const response = await axios.get('/data.json');
+        const updatedProducts = response.data.filter(product => product.id !== id);
+        dispatch(setProducts(updatedProducts));
+        setOriginalProducts(updatedProducts);
+        toast.error("Product removed locally!");
+      } catch (localError) {
+        console.error("Error deleting product locally:", localError);
+        toast.error("Failed to delete product");
+      }
     }
   };
 

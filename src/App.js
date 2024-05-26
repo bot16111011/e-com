@@ -13,9 +13,9 @@ const App = () => {
       <ToastContainer />
       <Routes>
         <Route path="/e-com" element={<Products />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/add-product" element={<AddProduct />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/e-com/products" element={<Products />} />
+        <Route path="/e-com/add-product" element={<AddProduct />} />
+        <Route path="/e-com/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

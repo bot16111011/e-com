@@ -12,10 +12,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
-        <Link to="/products" className="logo">E-shop</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/add-product">Add Products</Link>
-        <Link to="/cart" className="cart-link">
+        <Link to="/e-com/products" className="logo">E-shop</Link>
+        <Link to="/e-com/products">Products</Link>
+        <Link to="/e-com/add-product">Add Products</Link>
+        <Link to="/e-com/cart" className="cart-link">
           <img src={`data:image/svg+xml;utf8,${encodeURIComponent(svgCode)}`} alt="cart" />
           <span className="cart-count">{totalItems}</span>
         </Link>
