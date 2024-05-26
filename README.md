@@ -22,24 +22,24 @@ npm install axios redux react-redux redux-toolkit react-router-dom react-toastif
 
 # Packages Used and Their Purpose
 
-1. axios:
+1. **axios**:
 - Used for making HTTP requests to an API (e.g., fetching product data).
-2. redux and react-redux:
+2. **redux and react-redux**:
 - Used for managing global state (e.g., storing cart items, user authentication).
 - Redux provides a predictable state container for your application.
-3. redux-toolkit:
+3. **redux-toolkit**:
 - A set of tools and utilities for working with Redux.
 - Simplifies the process of creating Redux stores, reducers, and actions.
-4. react-router-dom:
+4. **react-router-dom**:
 - Enables routing within the application.
 - Allows navigation between different pages (e.g., product list, cart, add product).
-5. react-toastify:
+5. **react-toastify**:
 - Provides toast notifications for displaying messages (e.g., success, error) to the user.
 - Useful for showing alerts (e.g., “Product added to cart”) without disrupting the user experience.
-6. sass:
+6. **sass**:
 - A CSS preprocessor that allows you to write more maintainable and modular styles.
 - Helps organize your stylesheets and provides features like variables, nesting, and mixins.
-7. json-server:
+7. **json-server**:
 - Used for mocking a RESTful API during development.
 - Allows you to create a simple API using a JSON file (e.g., db.json).
 # Getting Started
