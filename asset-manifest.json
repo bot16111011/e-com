@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/ecom/static/css/main.38c86671.css",
-    "main.js": "/ecom/static/js/main.46ec58c6.js",
-    "index.html": "/ecom/index.html",
-    "main.38c86671.css.map": "/ecom/static/css/main.38c86671.css.map",
-    "main.46ec58c6.js.map": "/ecom/static/js/main.46ec58c6.js.map"
+    "main.css": "/e-com/static/css/main.38c86671.css",
+    "main.js": "/e-com/static/js/main.46ec58c6.js",
+    "index.html": "/e-com/index.html",
+    "main.38c86671.css.map": "/e-com/static/css/main.38c86671.css.map",
+    "main.46ec58c6.js.map": "/e-com/static/js/main.46ec58c6.js.map"
   },
   "entrypoints": [
     "static/css/main.38c86671.css",
