@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# E-Commerce Web App
+This project is an E-Commerce web application built using React. It allows users to view products, add them to the cart, and manage their shopping experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Installation
+1. First, create a new React app using the following command:
 
-## Available Scripts
+```
+npx create-react-app e-com
+```
 
-In the project directory, you can run:
+1. Navigate to the project directory:
 
-### `npm start`
+```
+cd e-com
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Install the necessary packages:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+npm install axios redux react-redux redux-toolkit react-router-dom react-toastify sass json-server
+```
 
-### `npm test`
+# Packages Used and Their Purpose
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. axios:
+- Used for making HTTP requests to an API (e.g., fetching product data).
+1. redux and react-redux:
+- Used for managing global state (e.g., storing cart items, user authentication).
+- Redux provides a predictable state container for your application.
+1. redux-toolkit:
+- A set of tools and utilities for working with Redux.
+- Simplifies the process of creating Redux stores, reducers, and actions.
+1. react-router-dom:
+- Enables routing within the application.
+- Allows navigation between different pages (e.g., product list, cart, add product).
+1. react-toastify:
+- Provides toast notifications for displaying messages (e.g., success, error) to the user.
+- Useful for showing alerts (e.g., “Product added to cart”) without disrupting the user experience.
+1. sass:
+- A CSS preprocessor that allows you to write more maintainable and modular styles.
+- Helps organize your stylesheets and provides features like variables, nesting, and mixins.
+1. json-server:
+- Used for mocking a RESTful API during development.
+- Allows you to create a simple API using a JSON file (e.g., db.json).
+# Getting Started
+1. Start the JSON server to serve mock data:
+```
+json-server --watch db.json
+```
 
-### `npm run build`
+1. Run the React app:
+```
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Open your browser and navigate to http://localhost:3000 to view the app.
