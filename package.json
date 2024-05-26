@@ -1,7 +1,7 @@
 {
   "name": "e-com",
   "version": "0.1.0",
-  "homepage": "https://bot16111011.github.io/ecom",
+  "homepage": "https://bot16111011.github.io/e-com/products",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",

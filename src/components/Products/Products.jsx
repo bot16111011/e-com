@@ -32,11 +32,18 @@ const Products = () => {
         setOriginalProducts(parsedProducts);
       } else {
         try {
-          const response = await axios.get('http://localhost:3000/productdata');
+          let response = await axios.get('http://localhost:3000/productdata');
           dispatch(setProducts(response.data));
           setOriginalProducts(response.data);
         } catch (error) {
-          console.error("Error fetching products:", error);
+          console.error("Error fetching from /productdata, trying /data.json", error);
+          try {
+            const response = await axios.get('/data.json');
+            dispatch(setProducts(response.data));
+            setOriginalProducts(response.data);
+          } catch (error) {
+            console.error("Error fetching products:", error);
+          }
         }
       }
     };

@@ -18,7 +18,15 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types and paths in state
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+        ignoredPaths: ['register'],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
