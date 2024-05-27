@@ -13,6 +13,7 @@ const productSlice = createSlice({
     },
     addProduct: (state, action) => {
       state.products.push(action.payload);
+      console.log(state.products);
     },
     updateProduct: (state, action) => {
       const index = state.products.findIndex(product => product.id === action.payload.id);

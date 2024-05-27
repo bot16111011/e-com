@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./addproduct.scss";
 import Navbar from "../Navbar/Navbar";
 import { v4 as uuidv4 } from 'uuid';
@@ -17,6 +17,16 @@ const AddProduct = ({ isEditing, initialData, onSave }) => {
   };
 
   const [form, setForm] = useState(initialData || initialFormState);
+  const [originalProducts, setOriginalProducts] = useState([]);
+  
+
+  useEffect(() => {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+      const parsedProducts = JSON.parse(storedProducts);
+      setOriginalProducts(parsedProducts);
+    }
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,11 +48,16 @@ const AddProduct = ({ isEditing, initialData, onSave }) => {
       dispatch(updateProduct(newProduct));
     } else {
       dispatch(addProduct(newProduct));
+      const updatedProducts = [...originalProducts,newProduct];
+      setOriginalProducts(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+      console.log(newProduct);
     }
 
     if (onSave) onSave();
+    console.log(form);
     setForm(initialFormState); // Reset the form state to initial state
-    toast.success("Product saved successfully!");
+    toast.success("Product added successfully!");
   };
 
   const handleDelete = () => {

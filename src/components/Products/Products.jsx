@@ -32,18 +32,12 @@ const Products = () => {
         setOriginalProducts(parsedProducts);
       } else {
         try {
-          let response = await axios.get('http://localhost:3000/productdata');
+          let response = await axios.get('https://my-json-server.typicode.com/bot16111011/data/products');
           dispatch(setProducts(response.data));
           setOriginalProducts(response.data);
+          localStorage.setItem('products', JSON.stringify(response.data));
         } catch (error) {
           console.error("Error fetching from /productdata, trying /data.json", error);
-          try {
-            const response = await axios.get('/data.json');
-            dispatch(setProducts(response.data));
-            setOriginalProducts(response.data);
-          } catch (error) {
-            console.error("Error fetching products from data.json:", error);
-          }
         }
       }
     };
@@ -67,19 +61,24 @@ const Products = () => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/productdata/${editForm.id}`, editForm);
+      await axios.put(`https://my-json-server.typicode.com/bot16111011/data/products/${editForm.id}`, editForm);
       dispatch(updateProduct(editForm));
       setIsEditing(null);
+      const updatedProducts = products.map(product => 
+        product.id === editForm.id ? editForm : product
+      );
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
       toast.success("Product updated successfully!");
     } catch (error) {
       console.error("Error updating product on server:", error);
       try {
-        const response = await axios.get('/data.json');
-        const updatedProducts = response.data.map(product => 
+        // Update locally stored products
+        const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        const updatedProducts = storedProducts.map(product => 
           product.id === editForm.id ? editForm : product
         );
-        dispatch(setProducts(updatedProducts));
-        setOriginalProducts(updatedProducts);
+        localStorage.setItem('products', JSON.stringify(updatedProducts));
+        dispatch(updateProduct(editForm));
         setIsEditing(null);
         toast.success("Product updated locally!");
       } catch (localError) {
@@ -91,20 +90,20 @@ const Products = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/productdata/${id}`);
+      await axios.delete(`https://my-json-server.typicode.com/bot16111011/data/products/${id}`);
       dispatch(removeProduct(id));
       const updatedProducts = products.filter(product => product.id !== id);
-      setOriginalProducts(updatedProducts);
       localStorage.setItem('products', JSON.stringify(updatedProducts));
-      toast.error("Product removed successfully!");
+      toast.success("Product removed successfully!");
     } catch (error) {
       console.error("Error deleting product on server:", error);
       try {
-        const response = await axios.get('/data.json');
-        const updatedProducts = response.data.filter(product => product.id !== id);
-        dispatch(setProducts(updatedProducts));
-        setOriginalProducts(updatedProducts);
-        toast.error("Product removed locally!");
+        // Update locally stored products
+        const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        const updatedProducts = storedProducts.filter(product => product.id !== id);
+        localStorage.setItem('products', JSON.stringify(updatedProducts));
+        dispatch(removeProduct(id));
+        toast.success("Product removed locally!");
       } catch (localError) {
         console.error("Error deleting product locally:", localError);
         toast.error("Failed to delete product");
