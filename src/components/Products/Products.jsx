@@ -32,7 +32,7 @@ const Products = () => {
         setOriginalProducts(parsedProducts);
       } else {
         try {
-          let response = await axios.get('http://localhost:3000/productdata');
+          let response = await axios.get('https://my-json-server.typicode.com/bot16111011/data/products');
           dispatch(setProducts(response.data));
           setOriginalProducts(response.data);
         } catch (error) {
@@ -67,7 +67,7 @@ const Products = () => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/productdata/${editForm.id}`, editForm);
+      await axios.put(`https://my-json-server.typicode.com/bot16111011/data/products/${editForm.id}`, editForm);
       dispatch(updateProduct(editForm));
       setIsEditing(null);
       toast.success("Product updated successfully!");
@@ -91,7 +91,7 @@ const Products = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/productdata/${id}`);
+      await axios.delete(`https://my-json-server.typicode.com/bot16111011/data/products/${id}`);
       dispatch(removeProduct(id));
       const updatedProducts = products.filter(product => product.id !== id);
       setOriginalProducts(updatedProducts);
